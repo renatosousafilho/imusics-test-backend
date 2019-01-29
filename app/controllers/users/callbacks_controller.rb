@@ -1,6 +1,6 @@
 class Users::CallbacksController < Devise::OmniauthCallbacksController
   def spotify
-    @user = User.from_omniauth(request.env["omniauth.auth"])
+    @user = User.from_omniauth(auth)
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication
     else
@@ -10,5 +10,11 @@ class Users::CallbacksController < Devise::OmniauthCallbacksController
 
   def failure
     redirect_to root_path
+  end
+
+  private
+
+  def auth
+    request.env['omniauth.auth']
   end
 end

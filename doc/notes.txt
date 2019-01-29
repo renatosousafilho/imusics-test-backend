@@ -1,0 +1,7 @@
+- aplicar doorkeeper (x)
+Obs. adicionar a url http://localhost:3000/users/auth/doorkept/callback	pelo dashboard.
+
+- criar app oauth
+- salvar token do spotify
+- salvar lista de artistas
+- montar api com a lista do artistas
