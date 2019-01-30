@@ -38,6 +38,7 @@ gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'omniauth', '~> 1.3', '>= 1.3.1'
 gem 'omniauth-spotify', '~> 0.0.13'
 gem 'doorkeeper', '~> 5.0.0.rc1'
+gem 'rspotify', '~> 2.4.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

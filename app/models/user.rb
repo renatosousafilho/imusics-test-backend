@@ -27,4 +27,29 @@ class User < ApplicationRecord
     end
   end
 
+  # TODO: instanciar cliente do spotify através dos dados salvos no banco.
+  def spotify_client
+    credentials = {"token" => self.spotify_access_token, "refresh_token"=> self.spotify_refresh_token, "expires_at"=> self.spotify_expires_at.to_i, "expires"=> true }
+    options = { "credentials" => credentials }
+    @client ||= RSpotify::User.new(options)
+    @client
+  end
+
+  def fetch_following_artists(after=nil)
+    params = {type: 'artist', limit: 50}
+    params[:after] = after if after.present?
+    spotify_client.following(params)
+  end
+
+  def following_artists
+    artists = []
+    while true do
+      from = (artists.empty?) ? nil : artists.last.id
+      hits = self.fetch_following_artists(from)
+      break if hits.size == 0
+      artists += hits
+    end
+
+    artists.sort_by { |u| u.name }
+  end
 end
