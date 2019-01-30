@@ -6,6 +6,10 @@ module Api
 
       def me
       end
+
+      def following
+        render json: { artists: current_resource_owner.following_artists }
+      end
     end
   end
 end

@@ -12,5 +12,14 @@ module OauthProvider
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     RSpotify::authenticate("f029f2e7296e4c9e874cf0459242c826", "107f4ba9fcd84c6fa7f3fa56c464279e")
+
+    config.middleware.insert_before Warden::Manager, Rack::Cors
+    
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
+      end
+    end
   end
 end

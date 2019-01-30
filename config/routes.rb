@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get '/me' => "users#me"
+      get '/following' => "users#following"
     end
   end
 
