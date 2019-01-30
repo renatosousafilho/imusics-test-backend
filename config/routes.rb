@@ -10,4 +10,6 @@ Rails.application.routes.draw do
       get '/me' => "users#me"
     end
   end
+
+   mount ActionCable.server => '/cable'
 end
