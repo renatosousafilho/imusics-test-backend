@@ -257,7 +257,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :spotify, "f029f2e7296e4c9e874cf0459242c826", "107f4ba9fcd84c6fa7f3fa56c464279e", scope: %w(
+  config.omniauth :spotify, ENV['SPOTIFY_APP_ID'], ENV['SPOTIFY_SECRET_KEY'], scope: %w(
       playlist-read-private
       user-read-private
       user-read-email
