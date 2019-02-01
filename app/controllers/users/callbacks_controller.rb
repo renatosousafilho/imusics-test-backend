@@ -2,6 +2,7 @@ class Users::CallbacksController < Devise::OmniauthCallbacksController
   def spotify
     @user = User.from_omniauth(auth)
     if @user.persisted?
+      SyncFollowingArtistsJob.perform_later(@user)
       sign_in_and_redirect @user, event: :authentication
     else
       redirect_to new_user_registration_url

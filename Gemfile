@@ -45,6 +45,9 @@ gem 'sprockets-rails', '~> 2.3.2'
 gem 'bootstrap', '~> 4.2.1'
 gem 'devise-bootstrap-views', '~> 1.0'
 
+gem 'sidekiq'
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

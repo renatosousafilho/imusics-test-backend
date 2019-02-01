@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190129164549) do
+ActiveRecord::Schema.define(version: 20190201141015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "artist_followings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "artist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_artist_followings_on_artist_id", using: :btree
+    t.index ["user_id"], name: "index_artist_followings_on_user_id", using: :btree
+  end
+
+  create_table "artists", force: :cascade do |t|
+    t.string   "spotify_id"
+    t.string   "name"
+    t.string   "image_url"
+    t.string   "genres"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
@@ -76,6 +94,8 @@ ActiveRecord::Schema.define(version: 20190129164549) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "artist_followings", "artists"
+  add_foreign_key "artist_followings", "users"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
