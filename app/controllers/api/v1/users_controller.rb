@@ -8,7 +8,7 @@ module Api
       end
 
       def following
-        render json: { artists: current_resource_owner.following_artists }
+        render json: { artists: current_resource_owner.artists.order(:name) }
       end
     end
   end

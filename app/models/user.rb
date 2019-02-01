@@ -12,6 +12,9 @@ class User < ApplicationRecord
   foreign_key: :resource_owner_id,
   dependent: :delete_all # or :destroy if you need callbacks
 
+  has_many :artist_followings
+  has_many :artists, through: :artist_followings
+
 
   def self.from_omniauth(auth)
     expires_at = auth.credentials.expires_at.present? ? Time.at(auth.credentials.expires_at) : nil
