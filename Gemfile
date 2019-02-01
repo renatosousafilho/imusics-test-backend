@@ -9,7 +9,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.7', '>= 5.0.7.1'
 # Use mysql as the database for Active Record
-gem 'pg' 
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -40,6 +40,11 @@ gem 'omniauth-spotify', '~> 0.0.13'
 gem 'doorkeeper', '~> 5.0.0.rc1'
 gem 'rspotify', '~> 2.4.0'
 gem 'rack-cors'
+
+gem 'sprockets-rails', '~> 2.3.2'
+gem 'bootstrap', '~> 4.2.1'
+gem 'devise-bootstrap-views', '~> 1.0'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
