@@ -8,7 +8,11 @@ Doorkeeper.configure do
   end
 
   admin_authenticator do
-    current_user.id == 1 # TODO: apply flag admin
+    if current_user
+      head :forbidden unless current_user.admin?
+    else
+      redirect_to new_user_session_url
+    end
   end
 
 
