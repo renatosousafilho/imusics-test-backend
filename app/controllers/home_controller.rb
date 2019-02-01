@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
   def index
-    ActionCable.server.broadcast "messages_channel", user: render_current_user
+    if user_signed_in?
+      ActionCable.server.broadcast "messages_channel", user: render_current_user
+    end
   end
 
   def render_current_user

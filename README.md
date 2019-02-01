@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Executar
 
-Things you may want to cover:
+Para executar a aplicação. Recomendo o uso do docker-compose. (https://docs.docker.com/compose/install/)
 
-* Ruby version
+Uma vez instalado, basta executar o comando:
 
-* System dependencies
+```
+docker-compose up
+```
 
-* Configuration
+Para criar o banco e executar as migrations.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+docker-compose run --rm web rails db:create db:migrate
+```
